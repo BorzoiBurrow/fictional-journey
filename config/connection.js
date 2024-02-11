@@ -1,9 +1,6 @@
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
-// test line to check .env is loaded
-console.log(process.env.greeting);
-
 
  const Sequelize = require('sequelize');
 
