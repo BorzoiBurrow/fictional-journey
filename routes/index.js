@@ -3,19 +3,6 @@ const Routes = require('./api');
 const path = require('path')
 router.use('/api', Routes);
 
-const blogPosts = [
-  {
-    title: 'First Post',
-    text: 'This is the first post.',
-    time: '11:30 AM', 
-  },
-  {
-    title: 'Second Post',
-    text: 'This is the second post',
-    time: '12:45 PM',
-  },
-]
-
 
 
 // home page 

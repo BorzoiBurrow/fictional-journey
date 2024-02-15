@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 app.set('view engine', 'hbs')
-
+app.use(express.json());
 app.use(routes)
 
 app.listen(PORT, () => {
