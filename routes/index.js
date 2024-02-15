@@ -2,6 +2,7 @@ const router = require('express').Router();
 const Routes = require('./api');
 const path = require('path')
 router.use('/api', Routes);
+
 // home page 
 router.get('/', (req,res) =>{
     try{ 
@@ -15,7 +16,7 @@ router.get('/', (req,res) =>{
 // DashBoard page
 router.get('/dashboard', (req,res) =>{
   try{ 
-  res.render('home.hbs', {title: 'Dashboard', layout: 'main'})
+  res.render('Dashboard.hbs', {title: 'Dashboard', layout: 'main'})
   }
   catch(error){
       console.log(`An error occured. As follows: ${error}`)
