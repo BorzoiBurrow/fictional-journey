@@ -6,12 +6,12 @@ router.use('/api', Routes);
 const blogPosts = [
   {
     title: 'First Post',
-    text: 'This is the content of the first post. It can contain multiple paragraphs and other content.',
+    text: 'This is the first post.',
     time: '11:30 AM', 
   },
   {
     title: 'Second Post',
-    text: 'Here is the second post with some more content. You can customize this content to fit your needs.',
+    text: 'This is the second post',
     time: '12:45 PM',
   },
 ]
