@@ -22,7 +22,7 @@ posts.init(
    },
    time: {
     type: DataTypes.TIME,
-    defaultValue: sequelize.fn('NOW'), 
+    defaultValue: DataTypes.NOW,
     allowNull: false
    }
   },
