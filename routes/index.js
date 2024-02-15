@@ -36,7 +36,7 @@ router.get('/Login', (req,res) =>{
       console.log(`An error occured. As follows: ${error}`)
   }
 })
-
+// css and scripts for pages
 router.get('/public/css/index.css', (req,res)=>{
   res.sendFile(path.resolve(__dirname + '../../public/css/index.css'))
 })
