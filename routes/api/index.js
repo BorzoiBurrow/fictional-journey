@@ -6,7 +6,6 @@ const router = require('express').Router();
 router.post('/posts', async (req, res) => {
   try {
     const { title, text, time } = req.body;
-    console.log(title,text,time)
     const newPost = await posts.create({ title, text, time});
 
     console.log('New blog post added:', newPost);
