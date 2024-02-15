@@ -25,7 +25,7 @@ router.get('/dashboard', (req,res) =>{
 // LogIn page
 router.get('/Login', (req,res) =>{
   try{ 
-  res.render('Login.hbs', {title: 'Log In', layout: 'main'})
+  res.render('LogIn.hbs', {title: 'Log In', layout: 'main'})
   }
   catch(error){
       console.log(`An error occured. As follows: ${error}`)
