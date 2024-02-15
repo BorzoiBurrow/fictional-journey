@@ -1,13 +1,15 @@
 const router = require('express').Router();
 const Routes = require('./api');
 const path = require('path')
+const posts = require("../models/posts")
 router.use('/api', Routes);
 
 
 
 // home page 
-router.get('/', (req,res) =>{
+router.get('/', async (req,res) =>{
     try{ 
+      const blogPosts = await posts.findAll();
       res.render('home', { layout: 'main', title: 'Home Page', posts: blogPosts });
     }
     catch(error){
