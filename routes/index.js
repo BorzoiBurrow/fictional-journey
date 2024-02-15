@@ -5,7 +5,7 @@ router.use('/api', Routes);
 // home page 
 router.get('/', (req,res) =>{
     try{ 
-    res.render('index.hbs', {title: 'Home', layout: 'main'})
+    res.render('home.hbs', {title: 'Home', layout: 'main'})
     }
     catch(error){
         console.log(`An error occured. As follows: ${error}`)
@@ -23,7 +23,7 @@ router.get('/dashboard', (req,res) =>{
 })
 
 // LogIn page
-router.get('/Log in', (req,res) =>{
+router.get('/Login', (req,res) =>{
   try{ 
   res.render('Login.hbs', {title: 'Log In', layout: 'main'})
   }
@@ -34,6 +34,9 @@ router.get('/Log in', (req,res) =>{
 
 router.get('/public/css/index.css', (req,res)=>{
   res.sendFile(path.resolve(__dirname + '../../public/css/index.css'))
+})
+router.get('/public/js/index.js', (req,res)=>{
+  res.sendFile(path.resolve(__dirname + '../../public/js/index.js'))
 })
 
 module.exports = router;
