@@ -43,14 +43,14 @@ justify-content: space-evenly;
   
   
   .blog-post h2 {
-    color: #333;
+    color: #fffefe;
   }
   
   .post-text {
-    color: #555;
+    color: #ffffff;
   }
   
   .post-timestamp {
-    color: #888;
+    color: #ffffff;
     font-size: 0.8em;
   }

@@ -3,10 +3,25 @@ const Routes = require('./api');
 const path = require('path')
 router.use('/api', Routes);
 
+const blogPosts = [
+  {
+    title: 'First Post',
+    text: 'This is the content of the first post. It can contain multiple paragraphs and other content.',
+    time: '11:30 AM', 
+  },
+  {
+    title: 'Second Post',
+    text: 'Here is the second post with some more content. You can customize this content to fit your needs.',
+    time: '12:45 PM',
+  },
+]
+
+
+
 // home page 
 router.get('/', (req,res) =>{
     try{ 
-    res.render('home.hbs', {title: 'Home', layout: 'main'})
+      res.render('home', { layout: 'main', title: 'Home Page', posts: blogPosts });
     }
     catch(error){
         console.log(`An error occured. As follows: ${error}`)
