@@ -25,11 +25,11 @@ posts.init(
       defaultValue: DataTypes.NOW,
       allowNull: false
     },
-    ownerId: {
+    owner_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'Account',
+        model: 'account',
         key: 'id'
       },
     },

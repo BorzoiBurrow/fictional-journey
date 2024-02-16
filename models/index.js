@@ -7,7 +7,7 @@ Account.hasMany(posts, {
 });
 
 posts.belongsTo(Account, {
-  foreignKey: 'ownerId', 
+  foreignKey: 'owner_id', 
 });
 
 module.exports = { posts, Account };
