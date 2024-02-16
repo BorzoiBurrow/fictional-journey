@@ -29,7 +29,7 @@ posts.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'account',
+        model: 'Account',
         key: 'id'
       },
     },
