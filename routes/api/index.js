@@ -9,20 +9,20 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sessionStore = new SequelizeStore({ db: sequelize });
 
 
-
-// post for making a new blog post
+// post for posts
 router.post('/posts', async (req, res) => {
-try {
-      const { title, text, time } = req.body;
-      const newPost = await posts.create({ title, text, time});
-
-      res.status(201).json({ message: 'success!' });
-}
-catch (error) {
-      console.error(error);
-      res.status(500).json({error});
-  }
-});
+      try {
+        const { title, text } = req.body;
+        const ownerId = req.session.userId; 
+    
+        const newPost = await posts.create({ title, text, ownerId });
+    
+        res.redirect("/dashboard")
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({error});
+      }
+    });
 
 // post req for logging in user 
 router.post('/login', async (req, res) => {

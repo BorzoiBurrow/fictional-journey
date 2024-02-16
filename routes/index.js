@@ -23,28 +23,29 @@ router.get('/', async (req,res) =>{
         console.log(`An error occured. As follows: ${error}`)
     }
   })
-
-// dashboard page
+  // dashboard page
   router.get('/dashboard', async (req, res) => {
     try {
       if (req.session.isLoggedIn) {
-
-        const user = await Account.findByPk(req.session.userId, {
-          include: {
-            model: posts,
-          },
+  
+        const userId = req.session.userId;
+  
+        const userPosts = await posts.findAll({
+          where: {
+            ownerId: userId
+          }
         });
-        res.render('dashboard', {title: 'Dashboard', layout: 'main', isLoggedIn: req.session.isLoggedIn, userPosts: user ? user.Posts : [], });
-
+  
+        res.render('dashboard', {title: 'Dashboard', layout: 'main', isLoggedIn: req.session.isLoggedIn, posts: userPosts});
+  
       } else {
         res.render('login', { title: 'Login', layout: 'main' });
       }
     } catch (error) {
-      console.error('Error retrieving user posts:', error);
+      console.error(error);
       res.status(500).send('Internal Server Error');
     }
   });
-
 
 // LogIn page
 router.get('/Login', (req,res) =>{
