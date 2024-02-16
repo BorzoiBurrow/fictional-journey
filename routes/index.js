@@ -29,7 +29,7 @@ router.get('/', async (req,res) =>{
     if (req.session.isLoggedIn === true){
 
       try{ 
-        res.render('Dashboard.hbs', {title: 'Dashboard', layout: 'main'})
+        res.render('Dashboard.hbs', {title: 'Dashboard', layout: 'main', isLoggedIn: req.session.isLoggedIn})
         }
         catch(error){
             console.log(`An error occured. As follows: ${error}`)
@@ -58,6 +58,14 @@ router.get("/creation", (req,res) =>{
   catch(error){
     console.log(`An error occured. As follows: ${error}`)
   }
+})
+router.get("/logout", (req,res) =>{
+try {
+  res.render('logout.hbs', {title: 'Logout confirmation', layout: "main"})
+}
+catch(error){
+  console.log(`An error occured. As follows: ${error}`)
+}
 })
 
 // css and scripts for pages
