@@ -16,7 +16,7 @@ router.use(session({
 router.get('/', async (req,res) =>{
     try{ 
         const blogPosts = await posts.findAll();
-        res.render('home', { layout: 'main', title: 'Home Page', posts: blogPosts });
+        res.render('home', { layout: 'main', title: 'Home Page', posts: blogPosts, isLoggedIn: req.session.isLoggedIn});
     }
     catch(error){
         console.log(`An error occured. As follows: ${error}`)
