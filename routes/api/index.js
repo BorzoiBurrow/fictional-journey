@@ -46,5 +46,26 @@ if (user && bcrypt.compareSync(password, user.password)) {
       res.status(500).send('Internal Server Error');
   }
 });
-  
+
+router.post('/creation', async (req, res) => {
+      const { username, password } = req.body;
+    
+      try {
+        const existingUser = await Account.findOne({ where: { username } });
+    
+        if (existingUser) {
+          return res.status(409).json({ message: 'Username is already taken. Please choose a different one.' });
+        }
+    
+        const newAccount = await Account.create({ username, password });
+        req.session.userId = newAccount.id;
+        req.session.isLoggedIn = true;
+    
+        res.status(201).json({ message: 'Account created successfully.' });
+      } catch (error) {
+        console.error(error);
+        res.status(500).json({error});
+      }
+    });
+
 module.exports = router;
