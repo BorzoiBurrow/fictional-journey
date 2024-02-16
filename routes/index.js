@@ -7,11 +7,7 @@ const session = require('express-session');
 router.use('/api', Routes);
 
 
-router.use(session({
-  secret: 'your-secret-key',
-  resave: false,
-  saveUninitialized: true,
-}));
+
 
 // home page 
 router.get('/', async (req,res) =>{
