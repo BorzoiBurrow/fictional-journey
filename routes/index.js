@@ -15,13 +15,14 @@ router.use(session({
 // home page 
 router.get('/', async (req,res) =>{
     try{ 
-      const blogPosts = await posts.findAll();
-      res.render('home', { layout: 'main', title: 'Home Page', posts: blogPosts });
+        const blogPosts = await posts.findAll();
+        res.render('home', { layout: 'main', title: 'Home Page', posts: blogPosts });
     }
     catch(error){
         console.log(`An error occured. As follows: ${error}`)
     }
   })
+
 
 // DashBoard page
   router.get('/dashboard', (req,res) =>{
@@ -34,7 +35,7 @@ router.get('/', async (req,res) =>{
             console.log(`An error occured. As follows: ${error}`)
     }}
     else {
-      res.render('LogIn.hbs', {title: 'Log In', layout: 'main', message: "You must be logged in to visit the dashboard."})
+        res.render('LogIn.hbs', {title: 'Log In', layout: 'main', message: "You must be logged in to visit the dashboard."})
     }
   })
 
@@ -42,18 +43,19 @@ router.get('/', async (req,res) =>{
 // LogIn page
 router.get('/Login', (req,res) =>{
   try{ 
-  res.render('LogIn.hbs', {title: 'Log In', layout: 'main'})
+      res.render('LogIn.hbs', {title: 'Log In', layout: 'main'})
   }
   catch(error){
       console.log(`An error occured. As follows: ${error}`)
   }
 })
+
 // css and scripts for pages
 router.get('/public/css/index.css', (req,res)=>{
-  res.sendFile(path.resolve(__dirname + '../../public/css/index.css'))
+    res.sendFile(path.resolve(__dirname + '../../public/css/index.css'))
 })
 router.get('/public/js/index.js', (req,res)=>{
-  res.sendFile(path.resolve(__dirname + '../../public/js/index.js'))
+    res.sendFile(path.resolve(__dirname + '../../public/js/index.js'))
 })
 
 module.exports = router;
