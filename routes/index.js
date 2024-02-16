@@ -53,7 +53,7 @@ router.get('/Login', (req,res) =>{
 // account creation page
 router.get("/creation", (req,res) =>{
   try{
-    res.render('creation.hbs', {title: 'Create an account', layout: 'main'})
+    res.render('Creation.hbs', {title: 'Create an account', layout: 'main'})
   }
   catch(error){
     console.log(`An error occured. As follows: ${error}`)
@@ -61,7 +61,7 @@ router.get("/creation", (req,res) =>{
 })
 router.get("/logout", (req,res) =>{
 try {
-  res.render('logout.hbs', {title: 'Logout confirmation', layout: "main"})
+  res.render('Logout.hbs', {title: 'Logout confirmation', layout: "main"})
 }
 catch(error){
   console.log(`An error occured. As follows: ${error}`)
