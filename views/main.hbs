@@ -8,12 +8,16 @@
 </head>
 <body>
 <nav class="navcontainer">
-    <div class="navigation">
-        <button class="navbut" id="Home">Home</button> 
-        <button class="navbut" id="DashBoard">DashBoard</button> 
-        <button class="navbut" id="Login">Log in</button>  
-        </div>
-    </nav>
+  <div class="navigation">
+    <button class="navbut" id="Home"><a href="/">Home</a></button>
+    <button class="navbut" id="DashBoard"><a href="/dashboard">Dashboard</a></button>
+    {{#if isLoggedIn}}
+      <button class="navbut" id="Logout"><a href="/logout">Logout</a></button>
+    {{else}}
+      <button class="navbut" id="Login"><a href="/login">Login</a></button>
+    {{/if}}
+  </div>
+</nav>
     {{{body}}}
 </body>
 </html>

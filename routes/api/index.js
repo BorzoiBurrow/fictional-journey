@@ -8,6 +8,8 @@ const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const sessionStore = new SequelizeStore({ db: sequelize });
 
+
+
 // post for making a new blog post
 router.post('/posts', async (req, res) => {
   try {
@@ -21,6 +23,7 @@ router.post('/posts', async (req, res) => {
   }
 });
 
+// post req for logging in user 
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -30,7 +33,8 @@ router.post('/login', async (req, res) => {
 
 // express login
       req.session.userId = user.id;
-      res.send('Login successful!');
+      req.session.isLoggedIn = true;
+      res.redirect('/');
     } else {
       res.send('Invalid username or password.');
     }
