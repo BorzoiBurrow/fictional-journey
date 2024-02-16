@@ -64,5 +64,17 @@ router.post('/creation', async (req, res) => {
         res.status(500).json({error});
       }
     });
+    
+router.post('/logout', (req, res) => {
+      req.session.destroy((error) => {
+      if (error) {
+          console.error(error);
+          res.status(500).send('Internal Server Error');
+      } else {
+          res.redirect('/');
+      }
+      });
+    });
+
 
 module.exports = router;
