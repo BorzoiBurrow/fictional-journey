@@ -22,26 +22,16 @@ Account.init(
       allowNull: false,
       unique: true,
     },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
-    },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
     },
   },
-//   hooks to salt the password and email
   {
     hooks: {
       // Before creating a new account, hash the password using bcrypt.
       beforeCreate: async (newAccount) => {
         newAccount.password = await bcrypt.hash(newAccount.password, 12);
-        newAccount.email = await bcrypt.hash(newAccount.email, 12);
         return newAccount;
       },
     },

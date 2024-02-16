@@ -2,7 +2,7 @@ const sequelize = require('../../config/connection');
 const posts = require("../../models/posts")
 const router = require('express').Router();
 const Account = require("../../models/accounts")
-
+const bcrypt = require('bcrypt')
 // creating the session with express-sessions
 const session = require('express-session');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -58,9 +58,6 @@ router.post('/creation', async (req, res) => {
         }
     
         const newAccount = await Account.create({ username, password });
-        req.session.userId = newAccount.id;
-        req.session.isLoggedIn = true;
-    
         res.status(201).json({ message: 'Account created successfully.' });
       } catch (error) {
         console.error(error);
