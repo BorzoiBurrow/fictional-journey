@@ -23,7 +23,11 @@ app.use(session({
   resave: false,
   saveUninitialized: true,
   store: sessionStore,
+  cookie: {
+    maxAge: 10 * 60 * 1000, 
+  },
 }));
+
 
 app.use(routes)
 
