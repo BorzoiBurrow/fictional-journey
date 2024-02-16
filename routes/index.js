@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const Routes = require('./api');
 const path = require('path')
-const posts = require("../models/posts")
+const { posts, Account } = require('../models/index');
 const session = require('express-session');
+
 router.use('/api', Routes);
 
 
@@ -23,21 +24,26 @@ router.get('/', async (req,res) =>{
     }
   })
 
+// dashboard page
+  router.get('/dashboard', async (req, res) => {
+    try {
+      if (req.session.isLoggedIn) {
 
-// DashBoard page
-  router.get('/dashboard', (req,res) =>{
-    if (req.session.isLoggedIn === true){
+        const user = await Account.findByPk(req.session.userId, {
+          include: {
+            model: posts,
+          },
+        });
+        res.render('dashboard', {title: 'Dashboard', layout: 'main', isLoggedIn: req.session.isLoggedIn, userPosts: user ? user.Posts : [], });
 
-      try{ 
-        res.render('Dashboard.hbs', {title: 'Dashboard', layout: 'main', isLoggedIn: req.session.isLoggedIn})
-        }
-        catch(error){
-            console.log(`An error occured. As follows: ${error}`)
-    }}
-    else {
-        res.render('LogIn.hbs', {title: 'Log In', layout: 'main', message: "You must be logged in to visit the dashboard."})
+      } else {
+        res.render('login', { title: 'Login', layout: 'main' });
+      }
+    } catch (error) {
+      console.error('Error retrieving user posts:', error);
+      res.status(500).send('Internal Server Error');
     }
-  })
+  });
 
 
 // LogIn page

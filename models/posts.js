@@ -1,5 +1,5 @@
 const { Model, DataTypes, DatabaseError } = require('sequelize');
-
+const Account = require("./accounts.js")
 const sequelize = require('../config/connection.js');
 
 class posts extends Model {}
@@ -34,5 +34,6 @@ posts.init(
     modelName: 'posts',
   }
 );
+posts.belongsTo(Account, { foreignKey: 'id' });
 
 module.exports = posts;
