@@ -58,7 +58,7 @@ router.post('/creation', async (req, res) => {
         }
     
         const newAccount = await Account.create({ username, password });
-        res.status(201).json({ message: 'Account created successfully.' });
+        res.redirect("/")
       } catch (error) {
         console.error(error);
         res.status(500).json({error});
@@ -74,6 +74,25 @@ router.post('/logout', (req, res) => {
           res.redirect('/');
       }
       });
+    });
+// delete route for posts on the dashboard
+    router.delete('/api/posts', async (req, res) => {
+      try {
+        const postId = req.params.id;
+    
+        const postToDelete = await posts.findByPk(postId);
+    
+        if (!postToDelete) {
+          return res.status(404).json({ error: 'Post not found' });
+        }
+
+        await postToDelete.destroy();
+    
+          res.status(200).json({ message: 'Post deleted successfully' });
+      } catch (error) {
+          console.error('Error deleting post:', error);
+          res.status(500).json({ error: 'Internal Server Error' });
+      }
     });
 
 
