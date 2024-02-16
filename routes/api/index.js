@@ -23,12 +23,11 @@ router.post('/posts', async (req, res) => {
 
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
-console.log(req.body)
   try {
     // Find the user by username
     const user = await Account.findOne({ where: { username } });
     if (user && bcrypt.compareSync(password, user.password)) {
-      
+
 // express login
       req.session.userId = user.id;
       res.send('Login successful!');
