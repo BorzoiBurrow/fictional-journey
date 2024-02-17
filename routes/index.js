@@ -29,7 +29,7 @@ router.get('/', async (req,res) =>{
           }
         });
   
-        res.render('dashboard.hbs', {title: 'Dashboard', layout: 'main', isLoggedIn: req.session.isLoggedIn, posts: userPosts});
+        res.render('Dashboard.hbs', {title: 'Dashboard', layout: 'main', isLoggedIn: req.session.isLoggedIn, posts: userPosts});
   
       } else {
         res.redirect('/Login')
