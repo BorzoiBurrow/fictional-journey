@@ -46,7 +46,7 @@ if (user && bcrypt.compareSync(password, user.password)) {
       res.status(500).send('Internal Server Error');
   }
 });
-
+// request to create an account.
 router.post('/creation', async (req, res) => {
       const { username, password } = req.body;
     
@@ -64,7 +64,7 @@ router.post('/creation', async (req, res) => {
         res.status(500).json({error});
       }
     });
-    
+// request to log out
 router.post('/logout', (req, res) => {
       req.session.destroy((error) => {
       if (error) {
@@ -75,6 +75,7 @@ router.post('/logout', (req, res) => {
       }
       });
     });
+
 // delete route for posts on the dashboard
     router.delete('/api/posts', async (req, res) => {
       try {

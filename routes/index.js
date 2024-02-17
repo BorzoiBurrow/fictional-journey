@@ -6,9 +6,6 @@ const session = require('express-session');
 
 router.use('/api', Routes);
 
-
-
-
 // home page 
 router.get('/', async (req,res) =>{
     try{ 
@@ -35,7 +32,7 @@ router.get('/', async (req,res) =>{
         res.render('dashboard.hbs', {title: 'Dashboard', layout: 'main', isLoggedIn: req.session.isLoggedIn, posts: userPosts});
   
       } else {
-        res.redirect('/')
+        res.redirect('/Login')
       }
     } catch (error) {
       console.error(error);
@@ -62,6 +59,7 @@ router.get("/creation", (req,res) =>{
     console.log(`An error occured. As follows: ${error}`)
   }
 })
+// logout page
 router.get("/logout", (req,res) =>{
 try {
   res.render('Logout.hbs', {title: 'Logout confirmation', layout: "main"})
