@@ -35,7 +35,7 @@ router.get('/', async (req,res) =>{
         res.render('dashboard.hbs', {title: 'Dashboard', layout: 'main', isLoggedIn: req.session.isLoggedIn, posts: userPosts});
   
       } else {
-        res.render('Login.hbs', { title: 'Login', layout: 'main' });
+        res.redirect('/')
       }
     } catch (error) {
       console.error(error);
