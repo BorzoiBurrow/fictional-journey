@@ -13,9 +13,8 @@ const sessionStore = new SequelizeStore({ db: sequelize });
 router.post('/posts', async (req, res) => {
       try {
         const { title, text } = req.body;
-        const ownerId = req.session.userId; 
-    
-        const newPost = await posts.create({ title, text, ownerId });
+        const owner_id = req.session.userId; 
+        const newPost = await posts.create({ title, text, owner_id });
     
         res.redirect("/dashboard")
       } catch (error) {

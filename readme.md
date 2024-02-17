@@ -9,3 +9,5 @@ https://turbo-spork-2c7f90bed534.herokuapp.com/
 heroku, for deployment, and all the used packages indicated in package.json.
 all credits for the used packages belong to the respective code owners.
 
+# Example screenshot
+![exampleView](image.png)
