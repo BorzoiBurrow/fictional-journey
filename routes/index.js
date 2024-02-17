@@ -32,7 +32,7 @@ router.get('/', async (req,res) =>{
           }
         });
   
-        res.render('dashboard', {title: 'Dashboard', layout: 'main', isLoggedIn: req.session.isLoggedIn, posts: userPosts});
+        res.render('Dashboard', {title: 'Dashboard', layout: 'main', isLoggedIn: req.session.isLoggedIn, posts: userPosts});
   
       } else {
         res.render('login', { title: 'Login', layout: 'main' });
