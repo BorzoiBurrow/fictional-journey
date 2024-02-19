@@ -2,3 +2,6 @@ SIGNATURE= "somerandomstringyoushouldchangethis"
 DB_USER= "root"
 DB_PW="SQLpassword"
 DB_NAME="BlogDB"
+
+
+# If you plan to use this ENV file, you MUST adjust the env name to ".env" and have the ".dotenv" node package installed.
