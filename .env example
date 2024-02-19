@@ -1,0 +1,4 @@
+SIGNATURE= "somerandomstringyoushouldchangethis"
+DB_USER= "root"
+DB_PW="SQLpassword"
+DB_NAME="BlogDB"
