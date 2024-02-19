@@ -76,9 +76,9 @@ router.post('/logout', (req, res) => {
     });
 
 // delete route for posts on the dashboard
-    router.delete('/api/posts', async (req, res) => {
+    router.delete('/api/posts/id', async (req, res) => {
       try {
-        const postId = req.params.id;
+        const postId = req.params.postId;
     
         const postToDelete = await posts.findByPk(postId);
     

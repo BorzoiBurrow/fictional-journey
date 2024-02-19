@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
         try {
           const response = await fetch(`/api/posts/${postId}`, {
-            method: 'DELETE',
+            method: 'POST',
           });
   
           if (response.ok) {
